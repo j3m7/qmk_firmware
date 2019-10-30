@@ -1,0 +1,2 @@
+
+#define DEVICE_VER   0x0001
