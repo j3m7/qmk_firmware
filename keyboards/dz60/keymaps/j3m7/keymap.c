@@ -4,8 +4,8 @@
 #define LF_DOIT LALT(KC_F2)  // Linux run command
 
 #define MF_PSCR  SCMD(KC_F4) // MacOS print screen
-#define MF_DOIT SCMD(KC_SPC)  
-#define MF_DIE SCMD(KC_W)
+#define MF_DOIT SCMD(KC_SPC) // MacOS find program
+#define MF_DIE SCMD(KC_W)    // MacOS close window
 
 enum layers {
 	     _LB = 0,    // Linux base OS
@@ -14,6 +14,23 @@ enum layers {
 	     _LF,        // Linux function 
 	     _MF,        // MacOS function 
 };
+
+
+
+/*  LAYER 0 (LINUX BASE)
+ * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
+ * │ESC│ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ = │BKS│ ` │
+ * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┤
+ * │ TAB │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │ [ │ ] │ BKSP│
+ * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
+ * │ CTRL │ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │ ' │ ENTER  │
+ * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┤
+ * │ SHIFT  │ Z │ X │ C │ V │ B │ N │ M │ , │ . │ / │ SHIFT│PSC│
+ * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬┴───┤
+ * │CTRL│LYR1│ ALT│           SPACE        │ ALT│LYR2│MENU│CTRL│
+ * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
+ */
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
   {
