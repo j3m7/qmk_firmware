@@ -1,4 +1,4 @@
-/* Copyright %YEAR% %YOUR_NAME%
+/* Copyright 2019 Ryota Goto
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "%KEYBOARD%.h"
+#include "mkii_soldered.h"
 
 // Optional override functions below.
 // You can leave any or all of these undefined.
@@ -21,11 +21,14 @@
 
 /*
 
-void matrix_init_kb(void) {
-  // put your keyboard start-up code here
-  // runs once when the firmware starts up
+void matrix_init_kb(void) {  
 
   matrix_init_user();
+}
+
+void led_set_kb(uint8_t usb_led) {
+  
+  led_set_user(usb_led);
 }
 
 void matrix_scan_kb(void) {
@@ -40,12 +43,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
   // runs for every action, just before processing by the firmware
 
   return process_record_user(keycode, record);
-}
-
-void led_set_kb(uint8_t usb_led) {
-  // put your keyboard LED indicator (ex: Caps Lock LED) toggling code here
-
-  led_set_user(usb_led);
 }
 
 */
