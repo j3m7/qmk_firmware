@@ -3,10 +3,9 @@
 #define LF_DIE LALT(KC_F4)   // Linux close window 
 #define LF_DOIT LALT(KC_F2)  // Linux run command
 
-#define MF_PSCR  LCMD(LSFT(KC_4)) // MacOS print screen
-#define MF_DOIT LCMD(KC_SPC) // MacOS find program
+#define MF_PSCR  LALT(LSFT(KC_4)) // MacOS print screen
+#define MF_DOIT LALT(KC_SPC) // MacOS find program
 #define MF_DIE LCMD(KC_W)    // MacOS close window
-
 
 
 /* Required improvements from MacOS map
@@ -67,9 +66,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,           KC_BSLS,
 	  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
 	  KC_LSFT, KC_NO,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, MF_PSCR,
-	  KC_LCMD, MO(_MF), KC_LALT, KC_SPC,  KC_SPC,  KC_SPC,  KC_RALT, MO(_CT), KC_NO,   KC_RCMD, KC_RCTL),
+	  KC_LCTL, MO(_MF), KC_LALT, KC_SPC,  KC_SPC,  KC_SPC,  KC_RALT, MO(_CT), KC_NO,   KC_RCMD, KC_RCTL),
    
-   // MacOS function layer
+   /*  LAYER N (MACOS BASE)
+    *  MACOS KEYBOARD SETTINGS
+    *  CAPS LOCK KEY: CAPS LOCK
+    *  CONTROL KEY: Control
+    *  OPTION KEY: Command
+    *  COMMAND KEY: Option
+    * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
+    * │ESC│ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ = │BKS│ ` │
+    * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┤
+    * │ TAB │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │ [ │ ] │ BKSP│
+    * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤
+    * │ CTRL │ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │ ' │ ENTER  │
+    * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┤
+    * │ SHIFT  │ Z │ X │ C │ V │ B │ N │ M │ , │ . │ / │ SHIFT│PSC│
+    * ├────┬───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬┴───┤
+    * │CTRL│LYR1│ ALT│           SPACE        │ ALT│LYR2│MENU│CTRL│
+    * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
+    */
    [_MF] = LAYOUT(
 	  KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,   KC_PAUS,
  	  KC_TRNS, MF_DIE,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_HOME, KC_UP,   KC_END,  KC_NO,   KC_NO,   KC_NO,             RESET,
