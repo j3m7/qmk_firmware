@@ -50,17 +50,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Ctrl |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ESC  | Alt | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * | Esc  | Ctrl | Alt  | GUI  |Lower |     Space   |Raise |   /  | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL, \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,  \
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-  KC_GESC, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LBRC, KC_RBRC, KC_BSLS, KC_CAPS \
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,  \
+  KC_GESC, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT \
 ),
 
 /* Colemak
@@ -119,13 +119,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |             |      | HOME | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
-
 [_LOWER] = LAYOUT_preonic_grid( \
-  KC_TILD, _______, _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, _______, _______, \
+  KC_TILD,    _______, _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, _______, _______, \
   KC_GESC, LF_DIE,  _______, _______, _______, _______, KC_PGUP, KC_HOME ,KC_UP,   KC_END,  _______, KC_DEL, \
   KC_RCTL, _______, _______, _______, _______, _______, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_PIPE, \
-  KC_RSFT, _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_END,  LF_DOIT, \
-  _______, KC_RCTL, KC_RALT, _______, _______, _______, KC_BSPC, _______, KC_RBRC, KC_VOLD, KC_VOLU, KC_MPLY \
+  KC_RSFT, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PGUP, LF_DOIT, \
+  _______, KC_RCTL, KC_RALT, _______, _______, _______, _______, _______, KC_RBRC, KC_HOME, KC_PGDN, KC_END \
 ),
 
 /* Raise
@@ -144,9 +143,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT_preonic_grid( \
   KC_GRV,  _______, _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, _______, _______, \
   _______, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______, KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, KC_DEL, \
-  KC_RCTL, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_PIPE, \
+  KC_RCTL, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_BSLS, \
   KC_RSFT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, LF_DOIT, \
-  KC_CAPS, _______, _______, _______, _______, _______,  KC_DEL,  _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END \
+  KC_CAPS, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END \
 ),
 
 /* Adjust (Lower + Raise)
@@ -164,8 +163,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_preonic_grid( \
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
-  _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,  \
-  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK, DVORAK,  _______, _______, \
+  _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, _______,  \
+  KC_CAPS, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK, DVORAK,  _______, _______, \
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 )
