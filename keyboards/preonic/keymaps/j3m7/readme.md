@@ -1,13 +1,13 @@
-# The default Preonic layout - largely based on the Planck's
+# Bastardised version of preonic default layout
 
 ## Gripes
-Move enter to center row
-Remove enter key
-Add minus key
++ Missing the following keys:
+	- Insert
+	- Print screen
++ MacOS mode needs more testing, tweaks
++ Keyboard gets wacky when computer is restarted
 
-
-* Add functiom layer - Use brightness key in lower right corner
-** Fn+Enter - run command
-** Fn+q - Quit program
-** Mouse buttons
-
+## Wishlist:
++ Add some more commands to the terminal
+	- Command for resetting eeprom
+	- Keyboard status - some system stats like runtime, ram, eeprom usage, etc.	
