@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_preonic_grid( \
   KC_TILD, _______, _______, LF_DIE,  _______, _______, _______, _______, S(KC_9), S(KC_0), KC_VOLD, KC_VOLU, \
   KC_GESC, LF_DIE,  _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_MPLY, KC_DEL,  \
-  KC_RCTL, _______, _______, _______, _______, _______, _______, _______, S(KC_LBRC), S(KC_RBRC), _______, KC_PIPE, \
+  KC_RCTL, _______, _______, _______, _______, _______, _______, _______, S(KC_LBRC), S(KC_RBRC), _______, KC_BSLS, \
   KC_RSFT, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_MNXT, KC_PGUP, LF_DOIT, \
   KC_PAUS, KC_RCTL, KC_RALT, KC_RGUI, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_END   \
 ),
@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT_preonic_grid( \
   KC_GRV,  _______, _______, _______, _______, _______, _______, _______, S(KC_9), S(KC_0), KC_VOLD, KC_VOLU, \
   _______, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______, _______, _______, KC_LBRC, KC_RBRC, KC_MPLY, KC_DEL, \
-  KC_RCTL, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, _______, _______, S(KC_LBRC), S(KC_RBRC), _______, KC_BSLS, \
+  KC_RCTL, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, _______, _______, S(KC_LBRC), S(KC_RBRC), _______, KC_PIPE, \
   KC_RSFT, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_MNXT, KC_PGUP, LF_DOIT, \
   KC_PAUS, KC_RCTL, KC_RALT, KC_RGUI, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_END \
 ),
