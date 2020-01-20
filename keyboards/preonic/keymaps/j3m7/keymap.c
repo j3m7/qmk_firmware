@@ -35,9 +35,39 @@ enum preonic_keycodes {
   BACKLIT
 };
 
+#define MT_SHFT MT(MOD_RSFT, KC_ENT)   // TAP ENTER, HOLD SHIFT 
 
 #define LF_DIE LALT(KC_F4)   // Linux close window
 #define LF_DOIT LALT(KC_F2)  // Linux run command
+
+#define TD_CLES TD(TD_CONTROL_ESCAPE)
+#define TD_T1LD TD(TD_1_TILDE)
+#define TD_QIPE TD(TD_QUOTE_PIPE)
+#define TD_PARN TD(TD_PAIR_PARN)
+#define TD_BRAC TD(TD_PAIR_BRAC)
+#define TD_CBRC TD(TD_PAIR_CBRC)
+#define TD_EBSL TD(TD_EQUAL_BACKSLASH)
+
+enum {
+      TD_CONTROL_ESCAPE,
+      TD_1_TILDE,
+      TD_QUOTE_PIPE,
+      TD_PAIR_PARN,
+      TD_PAIR_BRAC,
+      TD_PAIR_CBRC,
+      TD_EQUAL_BACKSLASH
+};
+
+qk_tap_dance_action_t tap_dance_actions[] =
+  {
+   [TD_CONTROL_ESCAPE] = ACTION_TAP_DANCE_DOUBLE(KC_LCTRL, KC_ESC),
+   [TD_1_TILDE] = ACTION_TAP_DANCE_DOUBLE(KC_1, KC_TILD),
+   [TD_QUOTE_PIPE] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_PIPE),
+   [TD_PAIR_PARN] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
+   [TD_PAIR_BRAC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
+   [TD_PAIR_CBRC] = ACTION_TAP_DANCE_DOUBLE(KC_LCBR, KC_RCBR),
+   [TD_EQUAL_BACKSLASH] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, KC_BSLS),
+  };
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -56,55 +86,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
-  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  \
+  TD_T1LD, KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, TD_EBSL, \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
-  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_ENT,  \
-  KC_GESC, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT  \
+  TD_CLES, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, TD_QIPE, \
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   MT_SHFT,  \
+  KC_LCTL, KC_PSCR, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT  \
 ),
 
-/* Colemak
- * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
-[_COLEMAK] = LAYOUT_preonic_grid( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_DEL,  \
-  KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-  BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LBRC, KC_RBRC, KC_BSLS, KC_CAPS  \
-),
-
-/* Dvorak
- * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   O  |   E  |   U  |   I  |   D  |   H  |   T  |   N  |   S  |  /   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   ;  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
-
-[_DVORAK] = LAYOUT_preonic_grid( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_DEL,  \
-  KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH, \
-  KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT,  \
-  BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
-),
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
@@ -120,9 +108,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid( \
-  KC_TILD, _______, _______, LF_DIE,  _______, _______, _______, _______, S(KC_9), S(KC_0), KC_VOLD, KC_VOLU, \
-  KC_GESC, LF_DIE,  _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_MPLY, KC_DEL,  \
-  KC_RCTL, _______, _______, _______, _______, _______, _______, _______, S(KC_LBRC), S(KC_RBRC), _______, KC_BSLS, \
+  KC_TILD, _______, _______, LF_DIE,  _______, _______, _______, _______, TD_PARN, KC_RPRN, KC_VOLD, KC_VOLU, \
+  KC_GESC, LF_DIE,  _______, _______, _______, _______, _______, _______, TD_BRAC, KC_RBRC, KC_MPLY, KC_DEL,  \
+  KC_RCTL, _______, _______, _______, _______, _______, _______, _______, TD_CBRC, KC_RCBR, _______, KC_BSLS, \
   KC_RSFT, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_MNXT, KC_PGUP, LF_DOIT, \
   KC_PAUS, KC_RCTL, KC_RALT, KC_RGUI, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_END   \
 ),
@@ -141,10 +129,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 
+
 [_RAISE] = LAYOUT_preonic_grid( \
-  KC_GRV,  _______, _______, _______, _______, _______, _______, _______, S(KC_9), S(KC_0), KC_VOLD, KC_VOLU, \
-  _______, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______, _______, _______, KC_LBRC, KC_RBRC, KC_MPLY, KC_DEL, \
-  KC_RCTL, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, _______, _______, S(KC_LBRC), S(KC_RBRC), _______, KC_PIPE, \
+  KC_GRV,  _______, _______, _______, _______, _______, _______, _______, TD_PARN, KC_RPRN, KC_VOLD, KC_VOLU, \
+  _______, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U, _______, _______, _______, TD_BRAC, KC_RBRC, KC_MPLY, KC_DEL, \
+  KC_RCTL, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, _______, _______, _______, TD_CBRC, KC_RCBR, _______, KC_PIPE, \
   KC_RSFT, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, KC_MNXT, KC_PGUP, LF_DOIT, \
   KC_PAUS, KC_RCTL, KC_RALT, KC_RGUI, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_END \
 ),
@@ -165,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT_preonic_grid( \
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
   _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, _______, \
-  KC_CAPS, EEP_RST, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK, DVORAK,  _______, _______, \
+  KC_CAPS, EEP_RST, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, _______, _______, _______,  _______, _______, \
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 )
@@ -173,24 +162,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-	case QWERTY:
-	  if (record->event.pressed) {
-	    set_single_persistent_default_layer(_QWERTY);
-	  }
-	  return false;
-	  break;
-	case COLEMAK:
-	  if (record->event.pressed) {
-	    set_single_persistent_default_layer(_COLEMAK);
-	  }
-	  return false;
-	  break;
-	case DVORAK:
-	  if (record->event.pressed) {
-	    set_single_persistent_default_layer(_DVORAK);
-	  }
-	  return false;
-	  break;
 	case LOWER:
 	  if (record->event.pressed) {
 	    layer_on(_LOWER);
@@ -208,23 +179,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	  } else {
 	    layer_off(_RAISE);
 	    update_tri_layer(_LOWER, _RAISE, _ADJUST);
-	  }
-	  return false;
-	  break;
-	case BACKLIT:
-	  if (record->event.pressed) {
-	    register_code(KC_RSFT);
-	    #ifdef BACKLIGHT_ENABLE
-	      backlight_step();
-	    #endif
-	    #ifdef __AVR__
-	    writePinLow(E6);
-	    #endif
-	  } else {
-	    unregister_code(KC_RSFT);
-	    #ifdef __AVR__
-	    writePinHigh(E6);
-	    #endif
 	  }
 	  return false;
 	  break;
