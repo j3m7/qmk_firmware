@@ -1,13 +1,20 @@
-# Bastardised version of preonic default layout
+# j3m7 daily driver keyboard
 
-## Gripes
-+ Missing the following keys:
-	- Insert
-	- Print screen
-+ MacOS mode needs more testing, tweaks
-+ Keyboard gets wacky when computer is restarted
+Changes from stock preonic layout:
+* Left CTRL, Alt, GUI and Shift mirror to right side on raise and lower
+* double tap lctrl -> escape
+* Arrow keys are aligned "normally"
+* Numbers are shifted left, opened space for + and - 
 
-## Wishlist:
-+ Add some more commands to the terminal
-	- Command for resetting eeprom
-	- Keyboard status - some system stats like runtime, ram, eeprom usage, etc.	
+Added:
+* Layers for numpad+mouse
+* Configured macros with sounds for recording steps
+* Support for workman layout
+* Shortcuts for launching and killing apps in linux. Alt+F2 and Alt-F4
+
+Removed:
+* muse
+* Encoder support
+* Dipswitch support
+* Any LED support
+* colemak and dvorak
