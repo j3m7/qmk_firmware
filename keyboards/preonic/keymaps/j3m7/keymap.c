@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,  _______, KC_RALT, KC_RGUI, _______,     KC_P0,       _______,  _______, KC_HOME, KC_PGDN,  KC_END  \
 ),
 [_RAISE] = LAYOUT_preonic_1x2uC( \
-  DM_PLY1, DM_PLY2, DM_RSTP, LF_DIE,  _______, KC_F1,   KC_F2,   KC_F3,   TD_PARN, KC_RPRN, KC_VOLD, KC_VOLU, \
+  DM_PLY1, DM_PLY2, DM_RSTP, LF_DIE,  _______, KC_F1,   KC_F2,   KC_F3,   TD_CBRC, KC_RCBR, KC_VOLD, KC_VOLU, \
   _______, _______, _______, _______, _______, KC_F4,   KC_F5,   KC_F6,   TD_BRAC, KC_RBRC, KC_MPLY, KC_DEL,  \
   KC_RCTL, _______, _______, _______, _______, KC_F7,   KC_F8,   KC_F9,   TD_CBRC, KC_RCBR, _______, KC_PIPE, \
   KC_RSFT, _______, _______, _______, _______, KC_F10,  KC_F11,  KC_F12,  KC_MPRV, KC_MNXT, KC_PGUP, LF_DOIT, \
