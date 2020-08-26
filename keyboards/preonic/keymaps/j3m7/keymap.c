@@ -42,10 +42,10 @@ enum preonic_keycodes {
 
 // Layers for different function
 enum encoder_function_t {
-    ENCODER_FUNCTION_BASE = 0,   // History scrub
+    ENCODER_FUNCTION_BASE = 0,    // History scrub
     ENCODER_FUNCTION_LOWER,       // Volume knob
     ENCODER_FUNCTION_RAISE,       // Word scroll
-    ENCODER_FUNCTION_TEST,         // Test something new
+    ENCODER_FUNCTION_TEST,        // Test something new
 };
 
 // Encoder modes are selected by pressing on the encoder, each mode should have a distinctive sound.
@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_CAPS, EEP_RST, MU_MOD,  _______, _______, _______, _______, _______, MU_ON,   MU_OFF,  _______, NUMPAD,  \
         KC_INS,  CK_RST,  _______, _______, _______, _______, _______, _______, MI_ON,   MI_OFF,  CK_UP,   _______, \
         _______, _______, _______, _______, _______,     _______,      _______, _______, CK_TOGG, CK_DOWN, _______  \
-        )
+    )
 };
 
 float end_macro_song[][2] = SONG(PLOVER_GOODBYE_SOUND);
@@ -164,7 +164,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case QWERTY:
     if (record->event.pressed) {
       set_single_persistent_default_layer(_QWERTY);
-      enc_selected_function = ENCODER_FUNCTION_RAISE;
+      enc_selected_function = ENCODER_FUNCTION_BASE;
     }
     return false;
 
@@ -185,12 +185,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
         enc_selected_function = ENCODER_FUNCTION_LOWER;
-
     }
     else {
         layer_off(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        enc_selected_function = ENCODER_FUNCTION_RAISE;
+        enc_selected_function = ENCODER_FUNCTION_BASE;
         encoder_hold_key(enc_held_key);
     }
     return false;
@@ -199,12 +198,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        enc_selected_function = ENCODER_FUNCTION_BASE;
+        enc_selected_function = ENCODER_FUNCTION_RAISE;
     }
     else {
       layer_off(_RAISE);
       update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      enc_selected_function = ENCODER_FUNCTION_RAISE;
+      enc_selected_function = ENCODER_FUNCTION_BASE;
       encoder_hold_key(enc_held_key);
     }
     return false;
@@ -248,7 +247,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void encoder_update_user(uint8_t index, bool clockwise) {
     enum encoder_mode_t selected_mode = enc_modes[enc_selected_function];
 
-    if (enc_selected_function == ENCODER_FUNCTION_RAISE) {
+    if (enc_selected_function == ENCODER_FUNCTION_BASE) {
        switch(selected_mode) {
             case ENCODER_MODE_PRIMARY:     // Scroll word
                 if (clockwise) {
@@ -274,7 +273,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
     }
 
-    if(enc_selected_function == ENCODER_FUNCTION_BASE) {
+    if(enc_selected_function == ENCODER_FUNCTION_RAISE) {
         switch(selected_mode) {
             case ENCODER_MODE_PRIMARY:
                 if (clockwise) {
