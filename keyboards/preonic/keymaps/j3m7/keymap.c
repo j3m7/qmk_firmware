@@ -115,7 +115,7 @@ void matrix_scan_user(void) {
     SEQ_ONE_KEY(KC_P) tap_code(KC_PSCR);
 
     SEQ_ONE_KEY(KC_V) {
-        SEND_STRING("model: " QMK_KEYBOARD ", keymap:" QMK_KEYMAP ", version" QMK_VERSION ", built on:" QMK_BUILDDATE );
+        SEND_STRING("QMK version " QMK_VERSION " running on " QMK_KEYBOARD ":" QMK_KEYMAP ", built " QMK_BUILDDATE);
     }
 
     SEQ_ONE_KEY(KC_H) {
